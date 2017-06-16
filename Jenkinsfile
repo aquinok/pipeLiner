@@ -17,11 +17,14 @@ try {
         agent any
 
         stages {
-            stage("Cloning Pipeliner") {
+            stage("Gathering Report") {
                 steps {
-                    echo "Cloning Pipeliner"
-                    // git url: 'git@github.com:aquinok/pipeLiner.git'
-                    sh './pipeLiner.sh'
+                    sh './pipeLiner.sh -r'
+                }
+            }
+            stage("Syntax Check") {
+                steps {
+                    sh './pipeLiner.sh -s'
                 }
             }
         }
