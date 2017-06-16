@@ -20,8 +20,8 @@ try {
             stage("Cloning Pipeliner") {
                 steps {
                     echo "Cloning Pipeliner"
-                    git url: 'git@github.com:aquinok/pipeLiner.git'
-                    // sh './pipeLiner.sh'
+                    // git url: 'git@github.com:aquinok/pipeLiner.git'
+                    sh './pipeLiner.sh'
                 }
             }
         }
