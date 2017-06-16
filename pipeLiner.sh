@@ -2,6 +2,7 @@
 # name: pipeLiner.sh
 # author: Nick Guyer
 # email: guyern@gmail.com
+# version: 0.1.0
 
 set -o errexit
 set -o nounset
@@ -25,4 +26,9 @@ function RunTest {
     echo "################################"
 }
 
+function Syntax {
+    find ./roles -name '*.yml' -maxdepth 3 | xargs -n1 yamllint -d relaxed -f parsable
+}
+
 RunTest
+Syntax
