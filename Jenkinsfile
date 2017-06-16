@@ -21,7 +21,7 @@ try {
                 steps {
                     echo "Cloning Pipeliner"
                     git url: 'git@github.com:aquinok/pipeLiner.git'
-                    sh './pipeLiner.sh'
+                    // sh './pipeLiner.sh'
                 }
             }
         }
