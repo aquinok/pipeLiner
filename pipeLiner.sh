@@ -11,12 +11,14 @@ set -o pipefail
 DIR="$(cd "$(dirname "${0}")"; echo $(pwd))"
 BASE="$(basename "${0}")"
 FILE="${DIR}/${BASE}"
+HASH=$(git rev-parse HEAD)
 
 function RunTest {
     echo "################################"
     echo "Build Information"
     echo "Directory: ${DIR}"
     echo "Filename: ${FILE}"
+    echo "Commit: ${HASH}"
     echo "Version Information:"
     echo "Ansible Version: $(ansible --version)"
     echo "Ansible Playbook Version: $(ansible-playbook --version)"
@@ -37,7 +39,7 @@ function Usage {
     echo ""
     echo "COMMANDS:"
     echo -e "\t -r      Gather Report Information - Runs a report"
-    echo -e "\t -s      Syntax - Runs a syntax check on an ansible playbooks"
+    echo -e "\t -s      Syntax - Runs a syntax check on an ansible playbook"
 }
 
 function Syntax {
@@ -51,10 +53,10 @@ if [ $# == 0 ];then
 fi
 
 case "$1" in
-# sets up ansible library
+# runs report
 -r)     RunTest
         ;;
-# sets up environment
+# runs yamllint
 -s)     Syntax
         ;;
 # anything else go to Usage function
