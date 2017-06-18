@@ -17,6 +17,12 @@ try {
         agent any
 
         stages {
+            stage("Clean workspace") {
+                steps {
+                    deleteDir()
+                    sh 'ls -lah'
+                }
+            }
             stage("Gathering Report") {
                 steps {
                     sh './pipeLiner.sh -r'
