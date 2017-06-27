@@ -48,7 +48,7 @@ function Syntax {
 }
 
 function CheckRun {
-    ansible-playbook -i inventory test.yml --check --diff
+    ansible-playbook test.yml --check --diff
 }
 
 # if no arguments are passed
