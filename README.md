@@ -14,6 +14,7 @@ VERSION:
          0.1.0
 
 COMMANDS:
+         -c      Check Run - Runs ansible-playbook with --check
          -r      Gather Report Information - Runs a report
          -s      Syntax - Runs a syntax check on an ansible playbook
 ```
