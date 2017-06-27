@@ -38,12 +38,17 @@ function Usage {
     echo -e "\t 0.1.0"
     echo ""
     echo "COMMANDS:"
+    echo -e "\t -c      Check Run - Runs ansible-playbook with --check"
     echo -e "\t -r      Gather Report Information - Runs a report"
     echo -e "\t -s      Syntax - Runs a syntax check on an ansible playbook"
 }
 
 function Syntax {
     find ./roles -name '*.yml' -maxdepth 3 | xargs -n1 yamllint -d relaxed -f parsable
+}
+
+function CheckRun {
+    ansible-play -i tests/inventory test.yml --check --diff
 }
 
 # if no arguments are passed
@@ -58,6 +63,9 @@ case "$1" in
         ;;
 # runs yamllint
 -s)     Syntax
+        ;;
+# runs ansible-playbook with --check
+-c)     CheckRun
         ;;
 # anything else go to Usage function
 *)      Usage

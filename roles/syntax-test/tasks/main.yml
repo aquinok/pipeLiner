@@ -1,2 +1,4 @@
 ---
 # tasks file for syntax-test
+- name: This is the syntax-test
+  debug: msg="Syntax Test"

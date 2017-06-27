@@ -27,6 +27,11 @@ try {
                     sh './pipeLiner.sh -s'
                 }
             }
+            stage("Check Test Run") {
+                steps {
+                    sh './pipeLiner.sh -c'
+                }
+            }
         }
     }
 } catch (e) {
